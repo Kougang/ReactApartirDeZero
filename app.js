@@ -58,26 +58,28 @@
 //     n++
 //     render()
 // },1000)
+
+
 class ManualIncrementer extends React.Component
 {
-constructor(props)
-{
-    super(props)
-    this.state = {n:0}
-}
+    constructor(props)
+    {
+        super(props)
+        this.state = {n:0}
+    }
 
-increment(e)
-{
-    e.preventDefault()
-    this.setState((state, props)=>({n: state.n +1}))
-}
-render()
-{
-    return <div>
-       valeur: {this.state.n}
-       <button onClick={this.increment.bind(this)}>Incrementer</button>
-    </div>
-}
+    increment(e)
+    {
+        e.preventDefault()
+        this.setState((state, props)=>({n: state.n +1}))
+    }
+    render()
+    {
+        return <div>
+        valeur: {this.state.n}
+        <button onClick={this.increment.bind(this)}>Incrementer</button>
+        </div>
+    }
 
 }
 
@@ -85,16 +87,16 @@ render()
 
 function WelcomeFunc({name , children})
 {
-    return         <div>
-    <h1>
-    bonjour {name}
-    </h1>
+        return<div>
+            <h1>
+            bonjour {name}
+            </h1>
 
-    <p>
-        {children}
-    </p>
+            <p>
+                {children}
+            </p>
 
-</div>
+        </div>
 
 }
 // ReactDOM.render(<WelcomeFunc name ="jean"> bonjour tout le monde </WelcomeFunc>, document.querySelector('#app'))
@@ -134,21 +136,17 @@ class Clock extends React.Component
 
     componentDidMount() {
     console.log(" dans didMount timer")
-
-
     this.timer = window.setInterval(this.tick.bind(this),1000)
+    }
 
-}
+    componentWillUnMount(){
+        window.clearInterval(this.timer)
+    }
 
-componentWillUnMount(){
-    window.clearInterval(this.timer)
-
-}
-
-tick()
-{
-    this.setState({date: new Date()})
-}
+    tick()
+    {
+        this.setState({date: new Date()})
+    }
 
     render()
     {
@@ -223,16 +221,14 @@ class Incrementer extends React.Component
             return {n:props.start}
         });    }
 
-render()
-{
+    render()
+    {
     return <div>
-    valeur:{this.state.n}
-    <button onClick={this.toggle}>{this.label()}</button>
-    <button onClick={this.reset}>Reset</button>
-
-
+        valeur:{this.state.n}
+        <button onClick={this.toggle}>{this.label()}</button>
+        <button onClick={this.reset}>Reset</button>
     </div>
-}
+    }
 }
 
 Incrementer.defaultProps = {
@@ -346,7 +342,13 @@ class Home extends React.Component {
     }
 }
 
-ReactDOM.render(<Home/>, document.querySelector('#app'));
+// ReactDOM.render(<Home/>, document.querySelector('#app'));
+
+
+
+
+
+
 
 
 // <div>
